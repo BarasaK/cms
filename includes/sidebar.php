@@ -30,31 +30,17 @@
             <?php 
                 $query = "SELECT * FROM categories";
                 $get_all_categories_sidebar = mysqli_query($conn,$query);
-
-                
                 
             ?>
     <div class="row">
-        <div class="col-lg-12">
-            <ul class="list-unstyled">
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-                <li><a href="#">Category Name</a>
-                </li>
-            </ul>
-        </div>
         <!-- /.col-lg-6 -->
         <div class="col-lg-6">
             <ul class="list-unstyled">
                     <?php
                         while ($row = mysqli_fetch_assoc($get_all_categories_sidebar)){
+                                $cat_id = $row['cat_id'];
                                 $cat_title = $row['cat_title'];
-
-                                echo "<li><a href='#'>{$cat_title}</a></li>";
+                                echo "<li><a href='categories.php?source=view_posts_by_cat&cat={$cat_id}'>{$cat_title}</a></li>";
                             }
                     ?>
                 </li>
