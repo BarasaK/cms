@@ -49,6 +49,7 @@ if(isset($_POST['edit_post'])){
     }
 
     $query = "UPDATE posts SET ";
+    $query .= "post_title = '{$post_title}', ";
     $query .= "post_category_id = '{$post_category_id}', ";
     $query .= "post_author = '{$post_author}', ";
     $query .= "post_date = now(), ";
@@ -91,8 +92,6 @@ if(isset($_POST['edit_post'])){
                         }
 
                 ?>
-
-<?php ?>
                      
             </select>
     </div>
