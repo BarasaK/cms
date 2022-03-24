@@ -9,6 +9,7 @@ if(isset($_POST['add_post'])){
     $post_content = $_POST['post_content'];
     $post_date = ('d-m-y');
     $post_comment_count = 4;
+    $post_category_id = $_POST['post_category_id'];
 
     move_uploaded_file($post_image_temp,"../images/$post_image");
 
@@ -17,8 +18,8 @@ if(isset($_POST['add_post'])){
     // || $post_content==""|| empty($post_content)){
     //     echo "Field(s) cannot be empty";
     // }else{
-                $query = "INSERT INTO posts(post_title, post_author,post_tag,post_status,post_image,post_content,post_date,post_comment_count) ";
-                $query .=  "VALUES ('{$post_title}','{$post_author}','{$post_tag}','{$post_status}','{$post_image}','{$post_content}',now(), $post_comment_count)";
+                $query = "INSERT INTO posts(post_title, post_author,post_tag,post_status,post_image,post_content,post_date,post_comment_count,post_category_id) ";
+                $query .=  "VALUES ('{$post_title}','{$post_author}','{$post_tag}','{$post_status}','{$post_image}','{$post_content}',now(), $post_comment_count,{$post_category_id})";
 
                 $create_post_query = mysqli_query($conn,$query);
 
@@ -35,9 +36,32 @@ if(isset($_POST['add_post'])){
         <input type="text" name="post_title" class="form-control">
     </div>
 
+
+
+
+
     <div class="form-group">
-        <label for="post_category_id">Post Category ID</label>
-        <input type="text" name="post_category_id" class="form-control">
+
+        <label for="post_category">Post Category</label><br>
+        <select name="post_category_id" id="">
+        
+        <?php
+                        $query = "SELECT * FROM categories";
+                        $select_categories = mysqli_query($conn,$query);
+
+                        checkQuery($select_categories);
+
+                        while ($row = mysqli_fetch_assoc($select_categories)){
+                            $cat_id = $row['cat_id'];    
+                            $category_title = $row['cat_title'];
+
+                            echo  "<option value='{$cat_id}'>{$category_title}</option>";
+
+                        }
+                        ?>
+                        
+
+        </select>
     </div>
 
     <div class="form-group">
