@@ -14,8 +14,16 @@
             <!-- Blog Entries Column //substituted with php query fn and a loop through all posts-->
             <div class="col-md-8">
 
+        
+        
+
             <?php 
-                $query = "SELECT * FROM posts";
+
+            if(isset($_GET['p_id'])){
+                $received_post_id = $_GET['p_id'];
+
+            }
+                $query = "SELECT * FROM posts where post_id = $received_post_id";
                 $get_all_posts = mysqli_query($conn,$query);
 
                 while ($row = mysqli_fetch_assoc($get_all_posts)){
