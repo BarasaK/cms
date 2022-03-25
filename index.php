@@ -15,7 +15,7 @@
             <div class="col-md-8">
 
             <?php 
-                $query = "SELECT * FROM posts";
+                $query = "SELECT * FROM posts ORDER BY post_id DESC";
                 $get_all_posts = mysqli_query($conn,$query);
 
                 while ($row = mysqli_fetch_assoc($get_all_posts)){
@@ -46,7 +46,7 @@
                 <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="">
                 <hr>
                 <p><?php echo $post_content; ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 

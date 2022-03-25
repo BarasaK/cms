@@ -18,7 +18,7 @@
 <?php
 
 
-$query = "SELECT * FROM comments";
+$query = "SELECT * FROM comments ORDER BY comment_id DESC";
 $get_all_comments = mysqli_query($conn,$query);
 
         while ($row = mysqli_fetch_assoc($get_all_comments)){

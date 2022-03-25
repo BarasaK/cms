@@ -54,7 +54,7 @@
                 <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="">
                 <hr>
                 <p><?php echo $post_content; ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <!-- <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a> -->
 
                 <hr>
 
@@ -80,10 +80,13 @@
 
                 checkQuery($add_comment_query);
 
+                $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id =$received_post_id";
+                $update_comment_count = mysqli_query($conn,$query);
             
 
                 }
                 ?>
+
                 <div class="well">
                     <h4>Leave a Comment:</h4>
                     <form role="form" action="" method="post">

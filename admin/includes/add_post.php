@@ -8,7 +8,7 @@ if(isset($_POST['add_post'])){
     $post_image_temp = $_FILES['post_image']['tmp_name'];
     $post_content = $_POST['post_content'];
     $post_date = ('d-m-y');
-    $post_comment_count = 4;
+    // $post_comment_count = 4;
     $post_category_id = $_POST['post_category_id'];
 
     move_uploaded_file($post_image_temp,"../images/$post_image");
@@ -18,8 +18,8 @@ if(isset($_POST['add_post'])){
     // || $post_content==""|| empty($post_content)){
     //     echo "Field(s) cannot be empty";
     // }else{
-                $query = "INSERT INTO posts(post_title, post_author,post_tag,post_status,post_image,post_content,post_date,post_comment_count,post_category_id) ";
-                $query .=  "VALUES ('{$post_title}','{$post_author}','{$post_tag}','{$post_status}','{$post_image}','{$post_content}',now(), $post_comment_count,{$post_category_id})";
+                $query = "INSERT INTO posts(post_title, post_author,post_tag,post_status,post_image,post_content,post_date,post_category_id) ";
+                $query .=  "VALUES ('{$post_title}','{$post_author}','{$post_tag}','{$post_status}','{$post_image}','{$post_content}',now(),{$post_category_id})";
 
                 $create_post_query = mysqli_query($conn,$query);
 
