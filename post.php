@@ -1,5 +1,6 @@
 <?php include "includes/db.php"; ?>
 <?php include "includes/header.php"; ?>
+<?php include "admin/functions.php"; ?>
 
 <body>
 
@@ -23,7 +24,7 @@
                 $received_post_id = $_GET['p_id'];
 
             }
-                $query = "SELECT * FROM posts where post_id = $received_post_id";
+                $query = "SELECT * FROM posts where post_id=$received_post_id";
                 $get_all_posts = mysqli_query($conn,$query);
 
                 while ($row = mysqli_fetch_assoc($get_all_posts)){
@@ -62,13 +63,46 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
+
+                <?php
+                if (isset($_POST['add_comment'])){   
+                    $comment_post_id = $received_post_id;
+                    $comment_email = $_POST['comment_email'];
+                    $comment_date = ('d-m-y');
+                    $comment_author = $_POST['comment_author'];
+                    $comment_status = 'Pending';
+                    $comment_content = $_POST['comment_content'];
+
+                $query = "INSERT INTO comments(comment_post_id,comment_email,comment_date,comment_author,comment_status,comment_content) ";
+                $query .="VALUES ({$comment_post_id},'{$comment_email}', now(),'{$comment_author}','{$comment_status}','{$comment_content}')";
+                
+                $add_comment_query = mysqli_query($conn,$query);
+
+                checkQuery($add_comment_query);
+
+            
+
+                }
+                ?>
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                    <form role="form" action="" method="post">
+
+                    <div class="form-group">
+                    <label for="comment_author">Name</label>
+                        <input type="text" class="form-control" rows="3" name="comment_author"></input>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment_email">Email</label>
+                            <input type="email" class="form-control" rows="3" name="comment_email"></input>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        
+                        <div class="form-group">
+                        <label for="comment_content">Comment</label>
+                            <textarea class="form-control" rows="3" name="comment_content"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="add_comment">Submit</button>
                     </form>
                 </div>
 

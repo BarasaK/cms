@@ -35,7 +35,7 @@ if(isset($_GET['source'])){
 
 switch($source) {
 
-    case 'add_post';
+    case 'edit';
     include "includes/add_post.php";
     break;
     case 'edit_post';

@@ -6,6 +6,7 @@
             <th>Comment</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Date</th>
             <th>In response to</th>
             <th>Approve</th>
             <th>Unapproved</th>
@@ -28,6 +29,7 @@ $get_all_comments = mysqli_query($conn,$query);
             $comment_author = $row['comment_author'];
             $comment_status = $row['comment_status'];
             $comment_content = $row['comment_content'];
+            $comment_date = $row['comment_date'];
             echo "<tr>";
             echo "<td>{$comment_id}</td>";
             echo "<td>{$comment_author}</td>";
@@ -35,13 +37,15 @@ $get_all_comments = mysqli_query($conn,$query);
             echo "<td>{$comment_email}</td>";
             echo "<td>{$comment_status}</td>";
             echo "<td>{$comment_date}</td>";
+
+            echo "<td>{$comment_post_id}</td>";
             
 
            
             
-            echo "<td>Approve</td>";
-            echo "<td>Unapprove</td>";
-            echo "<td><a href='posts.php?delete={comment_id}'>Delete</td></a>";
+            echo "<td><a href = #'>Approve</td>";
+            echo "<td><a href = #'>Unapprove</td>";
+            echo "<td><a href='comments.php?delete={$comment_id}'>Delete</td></a>";
             echo "</tr>";
         }
 
@@ -53,8 +57,8 @@ $get_all_comments = mysqli_query($conn,$query);
 <?php
 if(isset($_GET['delete'])){
     $del_id = $_GET['delete'];
-    $query = "DELETE FROM comments WHERE post_id = {$del_id}";
-    $delete_post = mysqli_query($conn,$query);
-    header("Location:categories.php"); //refreshes
+    $query = "DELETE FROM comments WHERE comment_id = {$del_id}";
+    $delete_comment = mysqli_query($conn,$query);
+    header("Location:includes/view_all_comments.php"); //refreshes
 }
 ?>
