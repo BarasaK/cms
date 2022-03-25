@@ -17,6 +17,10 @@
             <?php 
                 $query = "SELECT * FROM posts WHERE post_status ='Published' ORDER BY post_id DESC";
                 $get_all_posts = mysqli_query($conn,$query);
+                if (mysqli_num_rows($get_all_posts) ==0){
+
+                    echo "<h1>No Posts here</h1>";
+                }else{
 
                 while ($row = mysqli_fetch_assoc($get_all_posts)){
                     $post_id = $row['post_id'];
@@ -50,7 +54,7 @@
 
                 <hr>
 
-            <?php   }       ?> <!--close the loop-->
+            <?php   }       }?> <!--close the loop-->
             
 
 
