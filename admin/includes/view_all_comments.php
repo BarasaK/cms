@@ -48,8 +48,8 @@ $get_all_comments = mysqli_query($conn,$query);
 
                 }
 
-            echo "<td><a href = #'>Approve</td>";
-            echo "<td><a href = #'>Unapprove</td>";
+            echo "<td><a href='comments.php?approve={$comment_id}'>Approved</td></a>";
+            echo "<td><a href='comments.php?unapprove={$comment_id}'>Unapprove</td></a>";
             echo "<td><a href='comments.php?delete={$comment_id}'>Delete</td></a>";
             echo "</tr>";
         }
@@ -60,6 +60,24 @@ $get_all_comments = mysqli_query($conn,$query);
                             </table>
 
 <?php
+
+//approve
+if(isset($_GET['approve'])){
+    $comment_id = $_GET['approve'];
+    $query = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id=$comment_id ";
+    $update_comment = mysqli_query($conn,$query);
+    header("Location:comments.php"); //refreshes
+
+}
+//unapprove
+if(isset($_GET['unapprove'])){
+    $comment_id = $_GET['unapprove'];
+    $query = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id=$comment_id ";
+    $update_comment = mysqli_query($conn,$query);
+    header("Location:comments.php"); //refreshes
+
+}
+
 if(isset($_GET['delete'])){
     $del_id = $_GET['delete'];
     $query = "DELETE FROM comments WHERE comment_id = {$del_id}";
