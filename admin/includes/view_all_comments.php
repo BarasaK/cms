@@ -38,11 +38,16 @@ $get_all_comments = mysqli_query($conn,$query);
             echo "<td>{$comment_status}</td>";
             echo "<td>{$comment_date}</td>";
 
-            echo "<td>{$comment_post_id}</td>";
-            
+            $qry = "SELECT * FROM posts WHERE post_id =$comment_post_id";
+            $get_all_posts = mysqli_query($conn,$qry);
+                while ($row = mysqli_fetch_assoc($get_all_posts)){
+                $post_id = $row['post_id'];   
+                $post_title = $row['post_title'];    
+                
+                echo "<td><a href='../post.php?p_id=$post_id'>{$post_title}</td>";
 
-           
-            
+                }
+
             echo "<td><a href = #'>Approve</td>";
             echo "<td><a href = #'>Unapprove</td>";
             echo "<td><a href='comments.php?delete={$comment_id}'>Delete</td></a>";
@@ -59,6 +64,6 @@ if(isset($_GET['delete'])){
     $del_id = $_GET['delete'];
     $query = "DELETE FROM comments WHERE comment_id = {$del_id}";
     $delete_comment = mysqli_query($conn,$query);
-    header("Location:includes/view_all_comments.php"); //refreshes
+    header("Location:comments.php"); //refreshes
 }
 ?>
