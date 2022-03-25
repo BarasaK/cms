@@ -73,10 +73,27 @@ if(isset($_POST['add_post'])){
         <label for="post_tag">Post Tags</label>
         <input type="text" name="post_tag" class="form-control">
     </div>
-
+    
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" name="post_status" class="form-control">
+        <select name="post_status" id="" class="form-control">
+        <label for="post_status">Post Status</label><br>
+         
+        <?php
+                        $query = "SELECT * FROM post_status";
+                        $select_status = mysqli_query($conn,$query);
+
+                        checkQuery($select_status);
+
+                        while ($row = mysqli_fetch_assoc($select_status)){
+                            $post_status = $row['post_status'];    
+
+                            echo  "<option value='{$post_status}'>{$post_status}</option>";
+
+                        }
+                        ?>
+                        
+    </select>
+    
     </div>  
     
     <div class="form-group">

@@ -15,7 +15,7 @@
             <div class="col-md-8">
 
             <?php 
-                $query = "SELECT * FROM posts ORDER BY post_id DESC";
+                $query = "SELECT * FROM posts WHERE post_status ='Published' ORDER BY post_id DESC";
                 $get_all_posts = mysqli_query($conn,$query);
 
                 while ($row = mysqli_fetch_assoc($get_all_posts)){
