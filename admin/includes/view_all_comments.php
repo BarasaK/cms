@@ -9,7 +9,7 @@
             <th>Date</th>
             <th>In response to</th>
             <th>Approve</th>
-            <th>Unapproved</th>
+            <th>Unapprove</th>
             <th>Delete</th>
         </tr>
     </thead>
