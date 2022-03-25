@@ -48,7 +48,7 @@ $get_all_comments = mysqli_query($conn,$query);
 
                 }
 
-            echo "<td><a href='comments.php?approve={$comment_id}'>Approved</td></a>";
+            echo "<td><a href='comments.php?approve={$comment_id}'>Approve</td></a>";
             echo "<td><a href='comments.php?unapprove={$comment_id}'>Unapprove</td></a>";
             echo "<td><a href='comments.php?delete={$comment_id}'>Delete</td></a>";
             echo "</tr>";
