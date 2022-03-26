@@ -58,7 +58,7 @@
                                 <a href="../admin/users.php">View all users</a>
                             </li>
                             <li>
-                                <a href="#">Add user</a>
+                                <a href="users.php?source=add_user">Add user</a>
                             </li>
                         </ul>
                     </li>

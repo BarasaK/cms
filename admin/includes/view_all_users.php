@@ -37,7 +37,7 @@ $get_all_users = mysqli_query($conn,$query);
             echo "<td>{$user_firstname}</td>";
             echo "<td>{$user_lastname}</td>";
             echo "<td>{$user_email}</td>";
-            echo "<td>{$user_image}</td>";
+            echo "<td><img src = '../images/{$user_image}' width=100</td>";
             echo "<td>{$user_role}</td>";  
             echo "<td><a href='users.php?edit={$user_id}'>Edit</td></a>";
             echo "<td><a href='users.php?delete={$user_id}'>Delete</td></a>";
