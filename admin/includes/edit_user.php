@@ -90,7 +90,7 @@ if(isset($_POST['edit_user'])){
                             $role_id = $row['role_id'];    
                             $role_title = $row['role_title'];
 
-                            echo  "<option value='{$role_id}'>{$role_title}</option>";
+                            echo  "<option value='{$role_title}'>{$role_title}</option>";
 
                         }
                         ?>
