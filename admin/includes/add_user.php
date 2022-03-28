@@ -19,6 +19,14 @@ if(isset($_POST['add_user'])){
                 $create_user_query = mysqli_query($conn,$query);
 
                 checkQuery($create_user_query);
+
+                // echo "User created:" ." " . "<h2><a href='users.php'>ViewUsers</a>";
+
+                echo '<script type="text/javascript">'; 
+                echo 'alert("User Created");'; 
+                echo 'window.location = "users.php";';
+                echo '</script>';
+
 }
 ?>
 
