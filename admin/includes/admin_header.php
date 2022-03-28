@@ -40,6 +40,10 @@ if(!isset($_SESSION['user_role'])){
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 
 <!-- from cdn summernote , style for WYSIWYG editor -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
+
+<!-- local linking -->
+<link href="./css/summernote.css" rel="stylesheet">
+
 
 </head>
