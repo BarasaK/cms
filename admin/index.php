@@ -145,17 +145,39 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['Data', 'Count'],
+
+          <?php
+          $query = "SELECT * FROM posts WHERE post_status ='draft'";
+          $get_all_drafts = mysqli_query($conn,$query);
+          $draft_count = mysqli_num_rows($get_all_drafts);
+
+          $query = "SELECT * FROM comments WHERE comment_status ='unapproved'";
+          $get_all_unap_comments = mysqli_query($conn,$query);
+          $unapp_comment_count = mysqli_num_rows($get_all_unap_comments);
+
+          $query = "SELECT * FROM users WHERE user_role ='subscriber'";
+          $get_all_subscribers = mysqli_query($conn,$query);
+          $subscriber_count = mysqli_num_rows($get_all_subscribers);
+
+          ?>
+
+          <?php 
+            $element_text = ['Posts','Drafts','Comments','Pending Comments','Users','Subscribers','Categories'];
+            $element_count = [$posts_count,$draft_count,$comments_count,$unapp_comment_count,$users_count,$subscriber_count,$categories_count];
+
+            for($i=0; $i<7;$i++){
+
+                echo "['{$element_text[$i]}'".","."{$element_count[$i]}],";
+
+            }
+          ?>
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: 'Title',
+            subtitle: 'subtitle',
           }
         };
 
