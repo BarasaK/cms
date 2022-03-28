@@ -96,8 +96,8 @@ if(isset($_POST['add_post'])){
     </div>
 
     <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea id="" name="post_content" class="form-control" cols ="30" rows="10"></textarea>
+        <label for="summernote">Post Content</label>
+        <textarea id="summernote" name="post_content" class="form-control" cols ="30" rows="10"></textarea>
     </div>
         
     <div class="form-group">

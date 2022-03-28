@@ -39,4 +39,7 @@ if(!isset($_SESSION['user_role'])){
 <!-- from google charts to help with graph representation -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 
+<!-- from cdn summernote , style for WYSIWYG editor -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
 </head>
