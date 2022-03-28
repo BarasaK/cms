@@ -63,6 +63,9 @@ if(isset($_POST['edit_post'])){
     $update_post = mysqli_query($conn,$query);
     checkQuery($update_post);
 
+ echo "<p class='bg-success'>Post updated. <a href='../post.php?p_id={$post_id_url}'>View Post</a></p>";
+
+
 }
 
 
